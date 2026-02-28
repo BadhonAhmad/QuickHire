@@ -1,20 +1,15 @@
 # QuickHire - Job Board Application
 
-A full-stack job board application built with **Next.js** (frontend) and **Node.js/Express** (backend) with **SQLite** database.
+A full-stack job board application where job seekers can browse and apply for jobs, and admins can post and manage listings. Built with **Next.js** (frontend) and **Node.js/Express** (backend) with **SQLite** for persistent storage.
 
 ## Features
 
-### For Job Seekers
-- Browse job listings with search and filters
-- Filter by category, location, and keyword
-- View detailed job descriptions
-- Apply for jobs with name, email, resume link and cover note
-
-### For Employers (Admin)
-- Post new job listings
-- Manage existing jobs (view/delete)
-- View received applications
-- Dashboard with statistics
+- **Job Listings Page** — Search by keyword, filter by category and location, paginated results
+- **Job Detail Page** — Full description, requirements list, company info, and an "Apply Now" form (Name, Email, Resume URL, Cover Note)
+- **Admin Panel** — Post new jobs, view/delete existing jobs, view/delete applications, dashboard stats
+- **RESTful API** — Full CRUD for jobs and applications with input validation and proper error messages
+- **Database** — SQLite with auto-seeded sample data (12 jobs across 8 categories)
+- **Responsive Design** — Works on desktop, tablet, and mobile
 
 ## Tech Stack
 
@@ -24,6 +19,7 @@ A full-stack job board application built with **Next.js** (frontend) and **Node.
 | Styling   | Tailwind CSS 4                    |
 | Backend   | Node.js, Express 5                |
 | Database  | SQLite (via better-sqlite3)       |
+| Validation| express-validator                 |
 | Icons     | Lucide React                      |
 
 ## Project Structure
@@ -97,45 +93,64 @@ QuickHire/
 | GET    | /api/applications/:id | Get single application   |
 | DELETE | /api/applications/:id | Delete application       |
 
-## Setup Instructions
+## How to Run Locally
 
 ### Prerequisites
-- **Node.js** (v18 or higher)
-- **npm** (v9 or higher)
 
-### 1. Clone the repository
+- **Node.js** v18 or higher — [download here](https://nodejs.org/)
+- **npm** v9 or higher (comes with Node.js)
+
+### Step 1 — Clone the repository
+
 ```bash
-git clone <repo-url>
+git clone https://github.com/BadhonAhmad/QuickHire.git
 cd QuickHire
 ```
 
-### 2. Backend Setup
+### Step 2 — Start the Backend
+
 ```bash
 cd backend
 npm install
-npm run dev
 ```
-The API server will start on **http://localhost:5000**.  
-The SQLite database is created automatically with seed data.
 
-### 3. Frontend Setup
-```bash
-cd frontend
-npm install
-npm run dev
-```
-The frontend will start on **http://localhost:3000**.
+Create a `.env` file in the `backend/` folder (optional — defaults work out of the box):
 
-### Environment Variables
-
-**Backend** (`.env`):
 ```
 PORT=5000
 NODE_ENV=development
 FRONTEND_URL=http://localhost:3000
 ```
 
-No database connection string needed — SQLite runs locally.
+Then start the server:
+
+```bash
+npm run dev
+```
+
+The API will be running at **http://localhost:5000**.  
+A SQLite database is **created automatically** with 12 sample jobs on first run — no manual setup needed.
+
+### Step 3 — Start the Frontend
+
+Open a **new terminal** and run:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The app will be running at **http://localhost:3000**.
+
+### Step 4 — Use the App
+
+| Page | URL |
+|------|-----|
+| Home (Landing Page) | http://localhost:3000 |
+| Browse Jobs | http://localhost:3000/jobs |
+| Job Detail | http://localhost:3000/jobs/1 |
+| Admin Panel | http://localhost:3000/admin |
 
 ## Database Schema
 
