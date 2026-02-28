@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build outputs
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# Database files
+backend/data/*.db
+backend/data/*.db-wal
+backend/data/*.db-shm
+
+# Misc
+*.pem
+*.tsbuildinfo
+.vercel
+coverage/
